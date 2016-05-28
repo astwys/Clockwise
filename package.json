@@ -1,0 +1,26 @@
+{
+  "name": "clockwise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -w ./ -x npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "express": "^4.9.7",
+    "express-react-views": "^0.10.1",
+    "bcryptjs": "^2.0.2",
+    "body-parser": "^1.9.0",
+    "client-sessions": "^0.7.0",
+    "csurf": "^1.6.1",
+    "fs": "0.0.2",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.1"
+  }
+}
