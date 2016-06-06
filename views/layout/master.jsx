@@ -1,5 +1,7 @@
 var React = require('react');
-var Navbar = require('./navbar')
+var Navbar = require('./navbar');
+
+var s = require('./masterstyle');
 
 var MasterLayout = React.createClass({
     render:function() {
@@ -8,7 +10,7 @@ var MasterLayout = React.createClass({
                 <head>
                     <title>{this.props.name}</title>
                 </head>
-                <body>
+                <body style={s.master}>
                     <Navbar />
                     {this.props.children}
                 </body>

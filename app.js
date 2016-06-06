@@ -1,3 +1,4 @@
+require("babel-register");
 var models = require('./models');
 var utils = require('./utils');
 

@@ -10,17 +10,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2",
-    "express": "^4.9.7",
-    "express-react-views": "^0.10.1",
+    "babel-preset-node5": "^11.1.0",
+    "babel-register": "^6.9.0",
     "bcryptjs": "^2.0.2",
     "body-parser": "^1.9.0",
     "client-sessions": "^0.7.0",
     "csurf": "^1.6.1",
+    "express": "^4.9.7",
+    "express-react-views": "^0.10.1",
     "fs": "0.0.2",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.23.1"
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "sequelize": "^3.23.1",
+  },
+  "babel": {
+    "presets": [
+      "node5"
+    ]
   }
 }
