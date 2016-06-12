@@ -10,6 +10,8 @@ var MasterNavbar = new React.createClass({
                     <li><a href="/newproject">New Project</a></li>
                     <li><a href="/todos">Todos</a></li>
                     <li><a href="/account">Account</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
                     <li><a href="/logout">Logout</a></li>
                 </ul>
             </nav>
