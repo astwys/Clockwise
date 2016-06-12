@@ -1,5 +1,9 @@
 var express = require('express');
 
+// ---------
+var path = require('path');
+// ---------
+
 var utils = require('../utils');
 var models = require('../models');
 
@@ -8,6 +12,8 @@ var router = express.Router();
 // home page
 router.get('/', function(req, res) {
     res.render('index');
+    // res.sendFile(__dirname + '/../public/html/test.html');
+    // res.sendFile(path.resolve('public/html/test.html'));
 });
 
 //time page

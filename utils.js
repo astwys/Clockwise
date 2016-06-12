@@ -48,6 +48,7 @@ module.exports.createApp = function() {
   app.set('view engine', 'jsx');
   app.engine('jsx', require('express-react-views').createEngine());
 
+  // app.use(express.static(__dirname + '/public/html'));
 
   // middleware
   app.use(bodyParser.urlencoded({ extended: true }));
