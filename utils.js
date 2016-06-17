@@ -44,11 +44,13 @@ module.exports.createApp = function() {
   // settings
 
   // view engine setup
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jsx');
-  app.engine('jsx', require('express-react-views').createEngine());
+  // app.set('views', __dirname + '/views');
+  // app.set('view engine', 'jsx');
+  // app.engine('jsx', require('express-react-views').createEngine());
 
-  // app.use(express.static(__dirname + '/public/html'));
+app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/semantic'));
 
   // middleware
   app.use(bodyParser.urlencoded({ extended: true }));

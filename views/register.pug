@@ -1,0 +1,23 @@
+extends ./layout/master.pug
+
+block title
+	title= title
+
+block content
+	p= error
+
+	form(method='post')
+		input(type='hidden' name='_csrf' value=csrfToken)
+
+		p Username:
+			input(type='text' name='username' required='true' placeholder="Username")
+
+		p Email:
+			input(type='email' name='email' required='true' placeholder="Email")
+
+
+		p Password:
+			input(type='password' name='password' required='true' placeholder="Password")
+				
+		p
+			input(type='submit')

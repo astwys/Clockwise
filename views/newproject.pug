@@ -1,0 +1,23 @@
+extends ./layout/master.pug
+
+block title
+	title= title
+
+block content
+	p= error
+
+	form(method='post')
+		input(type='hidden' name='_csrf' value=csrfToken)
+
+		p Project Name:
+			input(type='text' name='name' required='true' placeholder="Project Name")
+
+		p
+			select.ui.fluid.search.dropdown#select(multiple='' name='members')
+				option(value="") Members
+				each user in users
+					option(value=user.id)= user.username
+
+		p
+			input(type='submit')
+		

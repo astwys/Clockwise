@@ -1,0 +1,22 @@
+extends ./layout/master.pug
+
+block title
+	title= title
+
+block navbar
+	ul
+		li 
+			a(href="/time") Time
+		li 
+			a(href="/projects") Projects
+		li 
+			a(href="/newproject") New Project
+		li 
+			a(href="/account") Account
+		li 
+			a(href="/logout") Logout
+
+block content
+	h4 Log Time
+	form(method='post')
+		p What did you work on?

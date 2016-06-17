@@ -1,0 +1,43 @@
+extends ./layout/master.pug
+
+block title
+	title= title
+
+block navbar
+	ul
+		li 
+			a(href="/time") Time
+		li 
+			a(href="/projects") Projects
+		li 
+			a(href="/newproject") New Project
+		li 
+			a(href="/account") Account
+		li 
+			a(href="/logout") Logout
+
+block content
+	p= error
+
+	each project in projects
+		h4= project.projectName
+
+		ul
+			each member in project.Members
+				li
+					case member.username
+						when user.username
+							span you
+						default
+							span= member.username
+					span , 
+					case member.userProject.teamleader
+						when true
+							span teamleader
+
+							if member.username == user.username
+								span 
+									a(href='edit/' + project.id) Edit
+
+						default 
+							span teammember

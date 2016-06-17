@@ -19,10 +19,13 @@
     "express": "^4.9.7",
     "express-react-views": "^0.10.1",
     "fs": "0.0.2",
+    "jquery": "^3.0.0",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
+    "pug": "^2.0.0-beta3",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "semantic-ui": "^2.1.8",
     "sequelize": "^3.23.1"
   },
   "babel": {

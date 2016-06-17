@@ -9,14 +9,14 @@ var router = express.Router();
 
 // render register page
 router.get('/register', function(req, res) {
-    res.render('register', {name: 'Register', csrfToken: req.csrfToken() });
+    res.render('register', {title: 'Register', csrfToken: req.csrfToken() });
 });
 
 
 // create new user
 router.post('/register', function(req, res) {
     if (req.body.username === "" || req.body.email === "" || req.body.password === "") {
-        res.render('register', { name: 'Register', error: 'Please fill in all fields.', csrfToken: req.csrfToken() });
+        res.render('register', { title: 'Register', error: 'Please fill in all fields.', csrfToken: req.csrfToken() });
         return;
     }
 
@@ -36,7 +36,7 @@ router.post('/register', function(req, res) {
 
 // render login page
 router.get('/login', function(req, res) {
-    res.render('login', { name: 'Login', csrfToken: req.csrfToken() });
+    res.render('login', { title: 'Login', csrfToken: req.csrfToken() });
 });
 
 // log user into account
@@ -54,7 +54,7 @@ router.post('/login', function(req, res) {
                 res.redirect('/time');
             } else {
                 res.render('login', {
-                    name: 'Login',
+                    title: 'Login',
                     csrfToken: req.csrfToken(),
                     error: 'incorrect username or password'
                 });
