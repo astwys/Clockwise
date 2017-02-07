@@ -1,5 +1,5 @@
 var express = require('express');
-var $ = require('jquery');
+var moment = require('moment');
 
 // ---------
 var path = require('path');
@@ -9,6 +9,7 @@ var utils = require('../utils');
 var models = require('../models');
 
 var router = express.Router();
+moment().format();
 
 // home page
 router.get('/', function(req, res) {
@@ -19,7 +20,7 @@ router.get('/', function(req, res) {
 
 //time page
 router.get('/time', utils.requireLogin, function(req, res) {
-    res.render('time', { title: 'Time' });
+    res.render('time', { title: 'Time', start: moment() });
 });
 
 // display page to create new project
@@ -50,12 +51,12 @@ router.post('/newproject', function(req, res) {
 
 router.get('/projects', utils.requireLogin, function(req, res) {
     models.User.findOne({ where: { username: req.session.user.username } }).then(function(user) {
-        user.getProjects({
-            include: [{
-                model: models.User,
-                as: 'Members'
-            }]
-        }).then(function(projects) {
+        user.getProjects(/*{*/
+            // include: [{
+            //     model: models.User,
+            //     as: 'Members'
+            // }]
+        /*}*/).then(function(projects) {
             res.render('projects', { title: 'Projects', projects: projects });
         }).error(function(err) {
             res.render('projects', { title: 'Projects', error: 'Couldn\'t load projects.' });
@@ -63,9 +64,26 @@ router.get('/projects', utils.requireLogin, function(req, res) {
     });
 });
 
-router.get('/edit/:project', utils.requireLogin, function(req, res) {
+router.get('/projects/:project', utils.requireLogin, function(req, res) {
+    models.User.findOne({ where: { username: req.session.user.username } }).then(function(user){
+        user.getProjects({
+            where: { id: req.params.project },
+            include: [{
+                model: models.User,
+                as: 'Members'
+            }]
+        }).then(function(projects) {
+            res.render('project', {
+                title: projects[0].projectName,
+                project: projects[0],
+                isTeamleader: projects[0].userProject.teamleader });
+        });
+    });
+});
+
+router.get('/projects/:project/edit', utils.requireLogin, function(req, res) {
     models.User.findOne({ where: { username: req.session.user.username } }).then(function(user) {
-        user.getProjects({ 
+        user.getProjects({
             where: { id: req.params.project },
             include: [{
                 model: models.User,
@@ -77,17 +95,13 @@ router.get('/edit/:project', utils.requireLogin, function(req, res) {
     });
 });
 
-router.post('/edit/:project', function(req, res) {
-
-    console.log("----------------------------------")
-    console.log(req.body.delete)
-    console.log("----------------------------------")
+router.post('/projects/:project/edit', function(req, res) {
     if (req.body.rename != null) {
         models.Project.findOne({ where: { id: req.params.project } }).then(function(project) {
             project.update({
                 projectName: req.body.name
             }).then(function() {
-                res.redirect('/edit/' + req.params.project);
+                res.redirect('/projects/' + req.params.project + '/edit/');
             });
         });
     } else if (req.body.delete != null) {
@@ -99,13 +113,12 @@ router.post('/edit/:project', function(req, res) {
     }
 });
 
-router.get('/edit/remove/:project/:user', utils.requireLogin, function(req, res) {
+router.get('/projects/:project/edit/remove/:user', utils.requireLogin, function(req, res) {
     models.Project.findOne({ where: { id: req.params.project } }).then(function(project) {
         models.User.findOne({ where: { id: req.params.user } }).then(function(user) {
             user.removeProject(project);
         }).then(function() {
-            // res.render('edit/' + req.params.project, { title: 'Edit', project: project });
-            res.redirect('/edit/' + req.params.project);
+            res.redirect('/projects/' + req.params.project + '/edit/');
         });
     });
 });

@@ -1,0 +1,27 @@
+extends ./layout/master.pug
+
+block title
+	title= title
+
+block content
+	p= error
+
+	h4= project.projectName
+
+	ul
+		each member in project.Members
+			li
+				case member.username
+					when user.username
+						span you
+					default
+						span= member.username
+				span , 
+				case member.userProject.teamleader
+					when true
+						span teamleader
+					default 
+						span teammember
+						
+	if isTeamleader
+		a(href=project.id + '/edit') Edit Project

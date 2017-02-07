@@ -13,7 +13,7 @@ block content
 
 		input(type='text' name='name' value=project.projectName)
 
-		input(type='submit' name='rename')
+		input(type='submit' value='Rename' name='rename')
 
 	ul
 		each member in project.Members
@@ -22,7 +22,7 @@ block content
 
 				if member.username != user.username
 					span  | 
-					a(href='remove/' + project.id + '/' + member.id) Remove
+					a(href='remove/' + member.id) Remove
 
 	form(method='post')
 		input(type='hidden' name='_csrf' value=csrfToken)

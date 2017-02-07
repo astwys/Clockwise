@@ -20,3 +20,12 @@ block content
 	h4 Log Time
 	form(method='post')
 		p What did you work on?
+			input(type='text' required='true' name='work' placeholder='Work')
+			
+		p When did you start?
+			input(type='text' name='start' value=start)
+			
+		p When did you stop?
+			input(type='text' name='stop' value=start)
+		p
+			input(type='submit' value='Log Work')

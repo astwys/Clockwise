@@ -20,24 +20,22 @@ block content
 	p= error
 
 	each project in projects
-		h4= project.projectName
+		p
+			h4= project.projectName
 
-		ul
-			each member in project.Members
-				li
-					case member.username
-						when user.username
-							span you
-						default
-							span= member.username
-					span , 
-					case member.userProject.teamleader
-						when true
-							span teamleader
-
-							if member.username == user.username
-								span 
-									a(href='edit/' + project.id) Edit
-
-						default 
-							span teammember
+		//- ul
+		//- 	each member in project.Members
+		//- 		li
+		//- 			case member.username
+		//- 				when user.username
+		//- 					span you
+		//- 				default
+		//- 					span= member.username
+		//- 			span , 
+		//- 			case member.userProject.teamleader
+		//- 				when true
+		//- 					span teamleader
+		//- 				default 
+		//- 					span teammember
+		//- 
+		a(href=project.id) Details

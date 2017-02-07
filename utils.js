@@ -51,6 +51,7 @@ module.exports.createApp = function() {
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/semantic'));
+app.use(express.static(__dirname + '/bootstrap'));
 
   // middleware
   app.use(bodyParser.urlencoded({ extended: true }));

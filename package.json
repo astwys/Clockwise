@@ -20,6 +20,7 @@
     "express-react-views": "^0.10.1",
     "fs": "0.0.2",
     "jquery": "^3.0.0",
+    "moment": "^2.13.0",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
     "pug": "^2.0.0-beta3",

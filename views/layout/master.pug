@@ -3,12 +3,14 @@ html
 	head
 		block title
 			title Clockwise
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet' href='/dist/semantic.min.css')
 		link(rel='stylesheet' href='/css/style.css')
 	body
 		block navbar
 		block content
 
-		script(src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous")
-		script(src='/dist/semantic.min.js')
-		script(src='js/script.js')
+		//- script(src='https://code.jquery.com/jquery-2.2.4.min.js' integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=' crossorigin='anonymous')
+		script(src='/js/bootstrap.min.js')
+		script(src='/dist/semantic.js')
+		script(src='/js/script.js')
